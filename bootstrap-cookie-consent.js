@@ -4,7 +4,7 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
 // Modified by Simon Freytag for syntax, namespace, jQuery and Bootstrap
 (function() {
     'use strict';
-    var C = {
+    window.C = {
         // Number of days before the cookie expires, and the banner reappears
         cookieDuration: 14,
 
@@ -24,7 +24,7 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
         bannerButton: "OK",
 
         // Link to your cookie policy.
-        bannerLinkURL: "/legal-docs/data-protection.html",
+        bannerLinkURL: "/cookies?",
 
         // Link text
         bannerLinkText: "Read more",
@@ -38,13 +38,13 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
         createDiv: function() {
               var banner = document.createElement('div');
               banner.innerHTML = (
-                '<div class="alert alert-success alert-dismissible text-' +
+                '<div id="cookieAlert" class="alert alert-success alert-dismissible text-' +
                 this.alertAlign + ' fade in" ' +
                 'role="alert" style="position: fixed; bottom: 0; width: 100%; ' +
                 'margin-bottom: 0"><strong>' + this.bannerTitle + '</strong> ' +
                 this.bannerMessage + ' <a href="' + this.bannerLinkURL + '">' +
                 this.bannerLinkText + '</a> <button type="button" class="btn ' +
-                this.buttonClass + '" onclick="C.createCookie(C.cookieName, C.cookieValue' +
+                this.buttonClass + '" onclick="window.C.createCookie(C.cookieName, C.cookieValue' +
                 ', C.cookieDuration)" data-dismiss="alert" aria-label="Close">' +
                 this.bannerButton + '</button></div>'
             );
@@ -55,7 +55,7 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
         },
 
         createCookie: function(name, value, days) {
-            //console.log("Create cookie")
+            console.log("accepted Cookies");
             var expires = "";
             if (days) {
                 var date = new Date();
@@ -63,6 +63,8 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
                 expires = "; expires=" + date.toGMTString();
             }
             document.cookie = name + "=" + value + expires + "; path=/";
+            document.querySelectorAll("#cookieAlert")[0].remove();
+            
         },
 
         checkCookie: function(name) {
@@ -85,7 +87,7 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
     };
 
     window.setTimeout(function() {
-        C.init();
+        window.C.init();
     }, 0);
 }());
 }
