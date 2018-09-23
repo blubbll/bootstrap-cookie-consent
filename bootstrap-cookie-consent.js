@@ -12,7 +12,8 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
             cookieName: 'complianceCookie',
 
             // Value of cookie
-            cookieValue: 'on',
+            cookieValueOn: 'on',
+            cookieValueOff: 'off',
 
             // Message banner title
             bannerTitle: "Cookies:",
@@ -20,20 +21,25 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
             // Message banner message
             bannerMessage: "This site uses cookies to deliver its services.",
 
-            // Message banner dismiss button
-            bannerButton: "OK",
+          
+            // accept class
+            acceptClass: "btn-success btn-xs",
+            // deny class
+            denyClass: "btn-danger btn-xs",
+          
+          
+            // accept text
+            acceptText: "accept",
+            // denytext
+            denyText: "deny",
 
             // Link to your cookie policy.
             bannerLinkURL: "/cookies?",
-
             // Link text
             bannerLinkText: "Read more",
 
             // Text alignment
             alertAlign: "center",
-
-            // Link text
-            buttonClass: "btn-success btn-xs",
 
             createDiv: function() {
                 var banner = document.createElement('div');
@@ -44,10 +50,16 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
                     'role="alert" style="position: fixed; bottom: 0; width: 100%; ' +
                     'margin-bottom: 0"><strong>' + this.bannerTitle + '</strong> ' +
                     this.bannerMessage + ' <a href="' + this.bannerLinkURL + '">' +
+                  
                     this.bannerLinkText + '</a> <button type="button" class="btn ' +
-                    this.buttonClass + '" onclick="window.C.createCookie(C.cookieName, C.cookieValue' +
-                    ', C.cookieDuration)" data-dismiss="alert" aria-label="Close">' +
-                    this.bannerButton + '</button></div>'
+                    this.acceptClass + '" onclick="window.C.createCookie(C.cookieName, C.cookieValueOn' +
+                    ', C.cookieDuration);" data-dismiss="alert" aria-label="Close">' +
+                    this.acceptText + '</button>'+
+                  
+                    '<button type="button" class="btn ' +
+                    this.denyClass + '" onclick="window.C.createCookie(C.cookieName, C.cookieValueOff' +
+                    ', C.cookieDuration);" data-dismiss="alert" aria-label="Close">' +
+                    this.denyText + '</button></div>'
                 );
                 if (typeof document.body.appendChild === 'function')
                     document.body.appendChild(banner)
@@ -74,6 +86,7 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
             },
             revokeCookie: function() {
                 this.deleteCookie(this.cookieName);
+                this.deleteCookie('connect.sid');
                 setTimeout(document.location.reload(), 0);
             },
 
@@ -97,7 +110,7 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
             },
 
             init: function() {
-                if (this.checkCookie(this.cookieName) != this.cookieValue)
+                if (this.checkCookie(this.cookieName) !== this.cookieValueOn && this.checkCookie(this.cookieName) !== this.cookieValueOff)
                     this.createDiv();
             }
         };
