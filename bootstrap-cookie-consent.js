@@ -37,8 +37,9 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
 
         createDiv: function() {
               var banner = document.createElement('div');
+              banner.id = 'cookieAlert';
               banner.innerHTML = (
-                '<div id="cookieAlert" class="alert alert-success alert-dismissible text-' +
+                '<div class="alert alert-success alert-dismissible text-' +
                 this.alertAlign + ' fade in" ' +
                 'role="alert" style="position: fixed; bottom: 0; width: 100%; ' +
                 'margin-bottom: 0"><strong>' + this.bannerTitle + '</strong> ' +
@@ -63,10 +64,14 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
                 expires = "; expires=" + date.toGMTString();
             }
             document.cookie = name + "=" + value + expires + "; path=/";
-            document.querySelectorAll("#cookieAlert")[0].remove();
+            document.querySelectorAll("#cookieAlert")[0].outerHTML = void 0;
             
         },
 
+        get accepted(){
+              return (this.checkCookie(this.cookieName) !== null && this.checkCookie(this.cookieName) === 'on')
+        },
+        
         checkCookie: function(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
