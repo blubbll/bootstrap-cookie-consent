@@ -73,7 +73,7 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
                 return (this.checkCookie(this.cookieName) !== null && this.checkCookie(this.cookieName) === 'on')
             },
             revokeCookie: function(){
-                document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                document.cookie = this.cookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 setTimeout(document.location.reload(),0);
             },
             checkCookie: function(name) {
