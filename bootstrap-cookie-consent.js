@@ -1,10 +1,10 @@
+
 if(window.ie && document.documentMode > 5 || !window.ie){
 // Creare's 'Implied Consent' EU Cookie Law Banner v:2.4
 // Conceived by Robert Kent, James Bavington & Tom Foyster
 // Modified by Simon Freytag for syntax, namespace, jQuery and Bootstrap
 (function() {
-    'use strict';
-    var C = {
+    window.C = {
         // Number of days before the cookie expires, and the banner reappears
         cookieDuration: 14,
 
@@ -49,7 +49,7 @@ if(window.ie && document.documentMode > 5 || !window.ie){
                 this.bannerButton + '</button></div>'
             );
             if (typeof document.body.appendChild === 'function')
-                document.body.appendChild(banner)
+                document.body.appendChild(banner);
             else if (typeof document.body.append === 'function')
                 document.body.append(banner);
         },
@@ -84,8 +84,9 @@ if(window.ie && document.documentMode > 5 || !window.ie){
         }
     };
 
+    
     window.setTimeout(function() {
-        C.init();
+        window.C.init();
     }, 0);
 }());
-};
+}
