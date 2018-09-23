@@ -82,7 +82,10 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
             },
 
             getAccepted: function() {
-                return (this.checkCookie(this.cookieName) !== null && this.checkCookie(this.cookieName) === 'on')
+                return (this.checkCookie(this.cookieName) !== null && this.checkCookie(this.cookieName) === this.cookieValueOn)
+            },
+            getDenied: function() {
+                return (this.checkCookie(this.cookieName) !== null && this.checkCookie(this.cookieName) === this.cookieValueOff)
             },
             revokeCookie: function() {
                 this.deleteCookie(this.cookieName);
