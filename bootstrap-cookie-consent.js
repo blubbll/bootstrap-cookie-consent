@@ -66,15 +66,22 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
                 }
                 document.cookie = name + "=" + value + expires + "; path=/";
                 document.querySelectorAll("#cookieAlert")[0].outerHTML = void 0;
-                setTimeout(document.location.reload(),0);
+                setTimeout(document.location.reload(), 0);
             },
 
             getAccepted: function() {
                 return (this.checkCookie(this.cookieName) !== null && this.checkCookie(this.cookieName) === 'on')
             },
-            revokeCookie: function(){
-                document.cookie = this.cookieName + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-                setTimeout(document.location.reload(),0);
+            revokeCookie: function() {
+                this.deleteCookie(this.cookieName);
+                setTimeout(document.location.reload(), 0);
+            },
+
+            deleteCookie: function(name) {
+                var d = new Date(); //Create an date object
+                d.setTime(d.getTime() - (1000 * 60 * 60 * 24)); //Set the time to the past. 1000 milliseonds = 1 second
+                var expires = "expires=" + d.toGMTString(); //Compose the expirartion date
+                window.document.cookie = name + "=" + "; " + expires; //Set the cookie with name and the expiration date
             },
             checkCookie: function(name) {
                 var nameEQ = name + "=";
