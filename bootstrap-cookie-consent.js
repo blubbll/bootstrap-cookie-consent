@@ -1,3 +1,4 @@
+if(window.ie && document.documentMode > 5 || !window.ie){
 // Creare's 'Implied Consent' EU Cookie Law Banner v:2.4
 // Conceived by Robert Kent, James Bavington & Tom Foyster
 // Modified by Simon Freytag for syntax, namespace, jQuery and Bootstrap
@@ -35,7 +36,8 @@
         buttonClass: "btn-success btn-xs",
 
         createDiv: function() {
-            var banner = (
+              var banner = document.createElement('div');
+              banner.innerHTML = (
                 '<div class="alert alert-success alert-dismissible text-' +
                 this.alertAlign + ' fade in" ' +
                 'role="alert" style="position: fixed; bottom: 0; width: 100%; ' +
@@ -86,3 +88,4 @@
         C.init();
     }, 0);
 }());
+};
