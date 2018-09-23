@@ -1,10 +1,10 @@
-
-if(window.ie && document.documentMode > 7 || !window.ie){
+if(window.ie && document.documentMode > 8 || !window.ie){
 // Creare's 'Implied Consent' EU Cookie Law Banner v:2.4
 // Conceived by Robert Kent, James Bavington & Tom Foyster
 // Modified by Simon Freytag for syntax, namespace, jQuery and Bootstrap
 (function() {
-    window.C = {
+    'use strict';
+    var C = {
         // Number of days before the cookie expires, and the banner reappears
         cookieDuration: 14,
 
@@ -49,7 +49,7 @@ if(window.ie && document.documentMode > 7 || !window.ie){
                 this.bannerButton + '</button></div>'
             );
             if (typeof document.body.appendChild === 'function')
-                document.body.appendChild(banner);
+                document.body.appendChild(banner)
             else if (typeof document.body.append === 'function')
                 document.body.append(banner);
         },
@@ -84,9 +84,11 @@ if(window.ie && document.documentMode > 7 || !window.ie){
         }
     };
 
-    
     window.setTimeout(function() {
-        window.C.init();
+        C.init();
     }, 0);
 }());
 }
+else window.setTimeout(function() {
+        console.log("No cookie consend needed, document is readonly under IE 8");
+    }, 0);
