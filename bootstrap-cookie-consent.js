@@ -1,5 +1,5 @@
 
-if(window.ie && document.documentMode > 5 || !window.ie){
+if(window.ie && document.documentMode > 7 || !window.ie){
 // Creare's 'Implied Consent' EU Cookie Law Banner v:2.4
 // Conceived by Robert Kent, James Bavington & Tom Foyster
 // Modified by Simon Freytag for syntax, namespace, jQuery and Bootstrap
