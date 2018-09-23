@@ -66,15 +66,16 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
                 }
                 document.cookie = name + "=" + value + expires + "; path=/";
                 document.querySelectorAll("#cookieAlert")[0].outerHTML = void 0;
-                setTimeout(function() {
-                    document.location.reload();
-                }, 0);
+                setTimeout(document.location.reload(),0);
             },
 
             getAccepted: function() {
                 return (this.checkCookie(this.cookieName) !== null && this.checkCookie(this.cookieName) === 'on')
             },
-
+            revokeCookie: function(){
+                document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                setTimeout(document.location.reload(),0);
+            },
             checkCookie: function(name) {
                 var nameEQ = name + "=";
                 var ca = document.cookie.split(';');
