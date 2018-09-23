@@ -1,3 +1,4 @@
+
 if(window.ie && document.documentMode >= 8 || !window.ie){
 // Creare's 'Implied Consent' EU Cookie Law Banner v:2.4
 // Conceived by Robert Kent, James Bavington & Tom Foyster
@@ -68,7 +69,7 @@ if(window.ie && document.documentMode >= 8 || !window.ie){
             
         },
 
-        get accepted(){
+        getAccepted: function(){
               return (this.checkCookie(this.cookieName) !== null && this.checkCookie(this.cookieName) === 'on')
         },
         
