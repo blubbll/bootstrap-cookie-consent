@@ -123,5 +123,5 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
         }, 0);
     }());
 } else window.setTimeout(function() {
-    console.log("No cookie consend needed, document is readonly under IE 8");
+    console.log("No cookie consend needed, document is readonly on anything under IE 8");
 }, 0);
