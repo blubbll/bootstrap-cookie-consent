@@ -47,7 +47,7 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
                 banner.innerHTML = (
                     '<div class="alert alert-success alert-dismissible text-' +
                     this.alertAlign + ' fade in" ' +
-                    'role="alert" style="position: fixed; bottom: 0; width: 100%; ' +
+                    'role="alert" style="position: fixed; bottom: 0; width: 100%; border-radius:0;' +
                     'margin-bottom: 0"><strong>' + this.bannerTitle + '</strong> ' +
                     this.bannerMessage + ' <a href="' + this.bannerLinkURL + '">' +
                   
