@@ -65,6 +65,7 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
                     document.body.appendChild(banner)
                 else if (typeof document.body.append === 'function')
                     document.body.append(banner);
+                document.querySelectorAll("#cookieAlert>.alert")[0].style.bottom = document.querySelectorAll("#footer")[0].offsetHeight + 'px';
             },
 
             createCookie: function(name, value, days) {
