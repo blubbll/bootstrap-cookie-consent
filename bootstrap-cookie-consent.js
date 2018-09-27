@@ -70,7 +70,7 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
 
             createCookie: function(name, value, days) {
                 console.log("accepted Cookies");
-
+                if(value == this.cookieValueOn){
                 var expires = "";
                 if (days) {
                     var date = new Date();
@@ -78,6 +78,8 @@ if (window.ie && document.documentMode >= 8 || !window.ie) {
                     expires = "; expires=" + date.toGMTString();
                 }
                 document.cookie = name + "=" + value + expires + "; path=/";
+                }
+                else document.cookie = name + "=" + value + "; path=/";
                 document.querySelectorAll("#cookieAlert")[0].outerHTML = void 0;
                 setTimeout(document.location.reload(), 0);
             },
